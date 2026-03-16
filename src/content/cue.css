@@ -1,0 +1,24 @@
+#env-guard-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  box-shadow: inset 0 0 0 var(--eg-thickness, 8px) var(--eg-color, transparent);
+  transition: box-shadow 120ms ease-in-out, opacity 120ms ease-in-out;
+  opacity: 1;
+  isolation: isolate;
+}
+
+#env-guard-frame.eg-hidden {
+  opacity: 0;
+}
+
+@keyframes eg-pulse {
+  0% { box-shadow: inset 0 0 0 var(--eg-thickness) var(--eg-color); }
+  50% { box-shadow: inset 0 0 0 calc(var(--eg-thickness) + 6px) var(--eg-color); }
+  100% { box-shadow: inset 0 0 0 var(--eg-thickness) var(--eg-color); }
+}
+
+#env-guard-frame.eg-pulse {
+  animation: eg-pulse 1.4s ease-in-out infinite;
+}

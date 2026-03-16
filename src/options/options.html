@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Env Guard — Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>Global Settings</h1>
+
+      <section class="panel">
+        <label class="row">
+          <span>Border Thickness</span>
+          <input id="thickness" type="range" min="2" max="24" value="8" />
+          <output id="thickness-val">8px</output>
+        </label>
+
+        <label class="row">
+          <span>Pulse Effect</span>
+          <input id="pulse" type="checkbox" />
+        </label>
+
+        <label class="row">
+          <span>Enable on All Tabs</span>
+          <input id="enabled" type="checkbox" checked />
+        </label>
+      </section>
+
+      <button id="save">Save Settings</button>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>

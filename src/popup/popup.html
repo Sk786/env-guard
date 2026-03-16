@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Env Guard</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="card">
+      <header>
+        <h1>Env Guard</h1>
+        <p>Add a rule for this environment.</p>
+      </header>
+
+      <form id="rule-form">
+        <label class="field">
+          <span>URL / Pattern</span>
+          <input
+            id="pattern"
+            type="text"
+            placeholder="*.prod.com or https://console.aws.amazon.com/*"
+            required
+          />
+          <label class="inline">
+            <input id="is-regex" type="checkbox" checked />
+            <span>Regex</span>
+          </label>
+        </label>
+
+        <label class="field">
+          <span>Environment</span>
+          <select id="env">
+            <option value="production">Production</option>
+            <option value="staging">Staging</option>
+            <option value="qa">QA</option>
+            <option value="development">Development</option>
+            <option value="custom">Custom</option>
+          </select>
+        </label>
+
+        <label class="field row">
+          <span>Color</span>
+          <div class="color-row">
+            <input id="color" type="color" value="#d92d20" />
+            <input id="color-hex" type="text" value="#d92d20" maxlength="7" />
+            <span class="swatch" id="swatch"></span>
+          </div>
+        </label>
+
+        <label class="field row">
+          <span>Border Width</span>
+          <div class="width-row">
+            <input id="border-width" type="range" min="1" max="20" value="4" />
+            <span id="width-val">4px</span>
+          </div>
+        </label>
+
+        <div class="actions">
+          <button type="submit">Save Rule</button>
+        </div>
+      </form>
+
+      <section class="rules">
+        <h2>Rules</h2>
+        <ul id="rules-list"></ul>
+      </section>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
