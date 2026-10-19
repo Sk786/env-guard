@@ -32,30 +32,33 @@
     <!-- CONTENT -->
     <div class="prose">
       <h1>Privacy Policy</h1>
-      <p class="meta">Last updated: March 2026 &nbsp;·&nbsp; Effective immediately upon installation</p>
+      <p class="meta">Last updated: October 2026 &nbsp;·&nbsp; Effective immediately upon installation</p>
 
       <h2>Overview</h2>
       <p>
-        Env Guard is designed with privacy as a first principle. The extension does not collect,
-        transmit, or share any personal data, browsing history, or usage information.
-        There are no analytics, no tracking pixels, and no external servers.
+        Env Guard processes the current page URL locally to check whether it matches one of your
+        environment rules. It does not send browsing URLs or page content to the developer or to
+        analytics services, and it does not keep a history of visited pages. Rules and settings are
+        stored with Chrome's sync storage and may be synced by Google according to your Chrome sync
+        settings. Env Guard has no developer-operated server or analytics.
       </p>
 
       <h2>Data stored</h2>
       <p>
-        The only data Env Guard stores are the rules you create — each rule consists of:
+        Env Guard stores the rules and settings you choose, including:
       </p>
       <ul>
         <li>A URL pattern or regular expression you provide</li>
         <li>An environment label (e.g. Production, Staging)</li>
         <li>A border color (hex value)</li>
         <li>A border width (number in pixels)</li>
+        <li>Global display preferences, such as border thickness, pulse effect, and whether cues are enabled</li>
       </ul>
       <p>
-        This data is saved exclusively in <strong>Chrome's built-in <code>chrome.storage.sync</code> API</strong>.
-        It is synced across your own Chrome profile by Google if you are signed in to Chrome.
-        Env Guard itself has no access to, and never reads or transmits, this synced data — it is
-        handled entirely by the browser.
+        This data is saved using <strong>Chrome's built-in <code>chrome.storage.sync</code> API</strong>.
+        Env Guard reads these saved values locally to apply your chosen cues. If Chrome Sync is
+        enabled, Google may sync this data across your signed-in Chrome profiles under your Chrome
+        sync settings. The Env Guard developer does not receive this data.
       </p>
 
       <h2>Permissions explained</h2>
@@ -65,45 +68,41 @@
           <strong>storage</strong> — to save and retrieve your environment rules using
           <code>chrome.storage.sync</code>.
         </li>
+        <li><strong>tabs</strong> — to identify the active tab and notify it when rules change. Env Guard does not use this permission to read tab titles or URLs.</li>
         <li>
-          <strong>tabs</strong> — to detect the URL of the currently active tab so the correct
-          border color can be applied immediately after you save or delete a rule. The extension
-          does not read page content or tab titles.
-        </li>
-        <li>
-          <strong>scripting</strong> — to send a message to the content script on the active tab,
-          triggering an update of the visual border. No scripts are injected beyond what is already
-          declared in the extension.
+          <strong>scripting</strong> — the extension uses a content script declared in its package
+          to display the cue. It does not dynamically inject scripts into pages.
         </li>
         <li>
           <strong>host permissions (&lt;all_urls&gt;)</strong> — because environment rules can match
           any domain including internal tools, staging servers, or custom production URLs. The
-          extension only reads the page URL to match against your rules. It does not read, modify,
-          or send any page content.
+          extension's declared content script checks the current page URL against your rules
+          locally. It does not read page content, modify page content, or send the URL elsewhere.
         </li>
       </ul>
 
       <h2>No data collection</h2>
       <p>Env Guard does not:</p>
       <ul>
-        <li>Collect or transmit any personal information</li>
-        <li>Track your browsing history or visited URLs</li>
+        <li>Send personal information or page URLs to the Env Guard developer</li>
+        <li>Record a browsing history or retain a list of visited URLs</li>
         <li>Use analytics or telemetry of any kind</li>
-        <li>Contact any external server or third-party service</li>
+        <li>Send data to developer-operated servers, analytics, or advertising services</li>
         <li>Display advertisements</li>
         <li>Monetize your data in any way</li>
       </ul>
 
       <h2>Third-party services</h2>
       <p>
-        Env Guard uses no third-party libraries, CDNs, or services at runtime.
-        The extension is entirely self-contained.
+        The extension uses no third-party libraries, CDNs, analytics, or developer-operated
+        services at runtime. Chrome's sync service may process your saved rules and settings when
+        Chrome Sync is enabled, as described above.
       </p>
 
       <h2>Open source</h2>
       <p>
         Env Guard is open source. You can review the full source code on
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/Sk786/env-guard" target="_blank" rel="noopener">GitHub</a>
         to verify these claims independently.
       </p>
 
@@ -117,7 +116,7 @@
       <h2>Contact</h2>
       <p>
         If you have questions about this privacy policy, please open an issue on the
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub repository</a>.
+        <a href="https://github.com/Sk786/env-guard/issues" target="_blank" rel="noopener">GitHub repository</a>.
       </p>
     </div>
 
@@ -127,7 +126,7 @@
         <span>Env Guard &copy; 2026</span>
         <div class="footer-links">
           <a href="privacy.html">Privacy</a>
-          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/Sk786/env-guard" target="_blank" rel="noopener">GitHub</a>
           <a href="#">Chrome Web Store</a>
         </div>
       </div>
