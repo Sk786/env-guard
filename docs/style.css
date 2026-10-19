@@ -287,6 +287,9 @@ nav {
 }
 .screenshots-grid img {
   width: 100%;
+  height: auto;
+  object-fit: contain;
+  align-self: start;
   border-radius: 12px;
   border: 1px solid var(--line);
   box-shadow: 0 8px 30px rgba(0,0,0,0.06);
