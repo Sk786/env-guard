@@ -26,17 +26,31 @@ colorHex.addEventListener("input", () => {
 });
 
 function render(rules) {
-  list.innerHTML = "";
+  list.replaceChildren();
   rules.forEach((r, i) => {
     const li = document.createElement("li");
-    li.innerHTML = `
-      <div class="rule-meta">
-        <span class="rule-dot" style="background:${r.color}"></span>
-        <span>${r.pattern}</span>
-      </div>
-      <div class="rule-actions">
-        <button data-i="${i}" data-action="delete">Delete</button>
-      </div>`;
+    const meta = document.createElement("div");
+    meta.className = "rule-meta";
+
+    const dot = document.createElement("span");
+    dot.className = "rule-dot";
+    dot.style.backgroundColor = r.color || "#d92d20";
+
+    const rulePattern = document.createElement("span");
+    rulePattern.textContent = String(r.pattern ?? "");
+
+    const actions = document.createElement("div");
+    actions.className = "rule-actions";
+
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.dataset.i = i;
+    deleteButton.dataset.action = "delete";
+    deleteButton.textContent = "Delete";
+
+    meta.append(dot, rulePattern);
+    actions.append(deleteButton);
+    li.append(meta, actions);
     list.appendChild(li);
   });
 }
@@ -69,7 +83,7 @@ form.addEventListener("submit", async (e) => {
   await chrome.storage.sync.set({ rules });
   form.reset();
   syncColor("#d92d20");
-  isRegex.checked = true;
+  isRegex.checked = false;
   borderWidth.value = 4;
   widthVal.textContent = "4px";
   loadRules();

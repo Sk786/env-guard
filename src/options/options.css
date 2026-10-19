@@ -1,10 +1,11 @@
 :root {
-  --bg: #f7f7f2;
+  color-scheme: light;
+  --bg: #f4f6f8;
   --panel: #fff;
-  --text: #141414;
-  --muted: #6a6a6a;
-  --line: #e6e6e0;
-  --accent: #111;
+  --text: #172b4d;
+  --muted: #52647a;
+  --line: #d9e0e8;
+  --accent: #155eef;
   --font: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
 }
 
@@ -14,20 +15,26 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
+  line-height: 1.5;
 }
 
 .wrap {
-  max-width: 640px;
-  margin: 24px auto;
-  padding: 0 16px 32px;
+  max-width: 680px;
+  margin: 48px auto;
+  padding: 0 24px 40px;
 }
 
-h1 { margin: 0 0 12px; }
+.wrap h1 { margin: 0 0 5px; font-size: 28px; letter-spacing: -0.5px; }
+.intro {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
 
 .panel {
   background: var(--panel);
-  padding: 16px;
-  border-radius: 12px;
+  padding: 12px 22px;
+  border-radius: 14px;
   border: 1px solid var(--line);
 }
 
@@ -36,16 +43,42 @@ h1 { margin: 0 0 12px; }
   grid-template-columns: 1fr auto auto;
   gap: 12px;
   align-items: center;
-  padding: 10px 0;
+  padding: 16px 0;
+  color: var(--text);
+}
+
+.row + .row { border-top: 1px solid var(--line); }
+
+.row input[type="range"] { accent-color: var(--accent); }
+.row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); }
+.row input:focus-visible, #save:focus-visible {
+  outline: 3px solid #84adff;
+  outline-offset: 3px;
 }
 
 #save {
-  margin-top: 16px;
-  height: 38px;
+  margin-top: 20px;
+  height: 44px;
   border: none;
   border-radius: 12px;
   background: var(--accent);
   color: #fff;
   font-weight: 600;
   width: 100%;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+
+#save:hover { background: #004eeb; }
+#save:active { transform: translateY(1px); }
+
+@media (max-width: 520px) {
+  .wrap { margin: 28px auto; padding-inline: 16px; }
+  .row { grid-template-columns: 1fr auto; }
+  .row output { grid-column: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
 }

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Env Guard",
   "description": "Visual cues for production/staging/dev environments.",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "action": {
     "default_title": "Env Guard",
     "default_popup": "src/popup/popup.html"

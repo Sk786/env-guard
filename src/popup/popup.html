@@ -14,8 +14,8 @@
       </header>
 
       <form id="rule-form">
-        <label class="field">
-          <span>URL / Pattern</span>
+        <div class="field">
+          <label class="field-label" for="pattern">URL / Pattern</label>
           <input
             id="pattern"
             type="text"
@@ -23,10 +23,10 @@
             required
           />
           <label class="inline">
-            <input id="is-regex" type="checkbox" checked />
+            <input id="is-regex" type="checkbox" />
             <span>Regex</span>
           </label>
-        </label>
+        </div>
 
         <label class="field">
           <span>Environment</span>
